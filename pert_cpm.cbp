@@ -33,6 +33,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="pert_cpm.cpp" />
+		<Unit filename="pert_cpm.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

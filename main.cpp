@@ -1,9 +1,12 @@
 #include <iostream>
+#include "PERT_CPM.h"
+
 
 using namespace std;
 
 int main()
 {
-    cout << "Hello world!" << endl;
+   le_vertice();
+
     return 0;
 }
