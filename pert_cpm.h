@@ -19,4 +19,16 @@ typedef struct {
 
 void le_vertice();
 
+int **Alocar_matriz_real (int qtdVert);
+
+void zeraMatriz(int **mat, int ordem);
+
+void printMatriz(int **mat, int qtd);
+
+//vector<string> splitString(string str, char delimitador);
+
+//vector<t_vertice> readerAtividades(string fileName);
+
+//void adjacencia(vector<t_vertice> atividades);
+
 #endif // PERT_CPM_H_INCLUDED
