@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1593373853 source:c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\main.cpp
+	<iostream>
+	"PERT_CPM.h"
+
+1593378484 c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.h
+	<iostream>
+	<vector>
+	<unordered_set>
+	<fstream>
+
+1593375102 source:c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.cpp
+	"PERT_CPM.h"
+	<iostream>
+	<vector>
+	"file_reader.cpp"
+
+1593376739 c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\file_reader.cpp
+	<iostream>
+	<vector>
+	<unordered_set>
+	"pert_cpm.h"
+
+1593376473 source:c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\file_reader.cpp
+	<iostream>
+	<vector>
+	<unordered_set>
+	<fstream>
+	"pert_cpm.h"
+
