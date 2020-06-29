@@ -93,6 +93,22 @@ void printMatriz(int **mat, int qtd){
     }
 }
 
+void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
+    atividades.at(0).Ida_inicio = 1;//inserindo valores iniciais, ja que o primeiro nao tem precedentes
+    atividades.at(0).Ida_fim = (atividades.at(0).Ida_inicio + atividades.at(0).Duracao - 1);
+
+    for(int i = 0; i < atividades.size(); i ++){
+        for( int j = 0; j < atividades.size(); j ++){
+            if(matrizAdjacencia[i][j] == 1){//se tiver precedente, continua do valor anterior
+                if()
+                atividades.at(i).Ida_inicio = (atividades.at(i-1).Ida_fim + 1);
+                atividades.at(i).Ida_fim = (atividades.at(i).Ida_inicio + atividades.at(i).Duracao - 1);
+            }
+        }
+    }
+
+}
+
 void adjacencia(vector<t_vertice> &atividades){
     int **matrizAdjacencia;
     matrizAdjacencia = Alocar_matriz_real(atividades.size());
@@ -103,10 +119,14 @@ void adjacencia(vector<t_vertice> &atividades){
             if(atividades.at(i).Precedente[0] == (j+1)){//verifica valor
                 matrizAdjacencia[i][j] = 1;
             }
+            if(atividades.at(i).Precedente[1] == (j+1)){//verifica valor
+                matrizAdjacencia[i][j] = 1;
+            }
         }
     }
     cout << "Imprimindo matriz adjacencia" << endl << endl;
     printMatriz(matrizAdjacencia, atividades.size());
+    preencheIda(matrizAdjacencia, atividades);
 }
 
 
@@ -119,7 +139,6 @@ void le_vertice(){
     cout << "Atividades \t Duracao \t Precedentes" << endl;
     for(int i = 0; i < atividades.size(); i ++)
         cout << "    " << atividades.at(i).Atividade << "\t\t    " <<  atividades.at(i).Duracao << "\t\t      " <<  atividades.at(i).Precedente[0] << "\t  "  <<  atividades.at(i).Precedente[1] <<  endl;
-
     adjacencia(atividades);
     //cout << "atividade 0: " << atividades.at(0).Atividade << endl;
 }
