@@ -9,11 +9,11 @@ typedef struct {
     int Atividade;
     int Duracao;
     std::vector<int> Precedente;
-    int Ida_inicio;
-    int Ida_fim;
-    int Volta_inicio;
-    int Volta_fim;
-    int Folga;
+    int Ida_inicio = 0;
+    int Ida_fim = 0;
+    int Volta_inicio = 0;
+    int Volta_fim = 0;
+    int Folga = 0;
 }t_vertice;
 
 void le_vertice();

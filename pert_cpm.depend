@@ -3,16 +3,14 @@
 	<iostream>
 	"PERT_CPM.h"
 
-1593386534 c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.h
+1593434647 c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.h
 	<iostream>
 	<vector>
-	<unordered_set>
 	<fstream>
 
-1593386517 source:c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.cpp
+1593439533 source:c:\users\diogo\documents\faculdade-materias\grafos\pert_cpm\pert_cpm.cpp
 	<iostream>
 	<vector>
-	<unordered_set>
 	<fstream>
 	"pert_cpm.h"
 

@@ -32,6 +32,38 @@ void printMatriz(int **mat, int qtd){
     }
 }
 
+void preencheVolta(int **matrizAdjacencia,vector<t_vertice> &atividades){
+
+    //achar o maior fim
+    int fim_maior = 0;
+    for(int i = 0; i < atividades.size(); i ++){
+        for( int j = 0; j < atividades.size(); j ++){
+            if(atividades.at(i).Ida_fim > fim_maior) //procura maior valor de fim
+                fim_maior = atividades.at(i).Ida_fim;
+        }
+    }
+    cout << "fim maior = " << fim_maior << endl;
+
+    atividades.at(atividades.size()-1).Volta_fim = fim_maior;
+    atividades.at(atividades.size()-1).Volta_inicio = fim_maior;
+
+
+
+    for(int i = atividades.size()-1; i >= 0 ; i --){
+        for( int j = 0; j < atividades.size(); j ++){
+            if(matrizAdjacencia[i][j] == 1){ //procura maior valor de fim
+                atividades.at(j).Volta_fim = atividades.at(i).Volta_inicio - 1;
+                atividades.at(j).Volta_inicio = atividades.at(j).Volta_fim - atividades.at(j).Duracao + 1;
+            }
+        }
+    }
+    cout << endl << endl;
+    for(int i = 0; i < atividades.size(); i ++){
+        cout << "atividade: " << atividades.at(i).Atividade << "\t" <<  atividades.at(i).Volta_inicio << "\t" << atividades.at(i).Volta_fim << endl;
+    }
+
+}
+
 void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
     atividades.at(0).Ida_inicio = 1;//inserindo valores iniciais, ja que o primeiro nao tem precedentes
     atividades.at(0).Ida_fim = (atividades.at(0).Ida_inicio + atividades.at(0).Duracao - 1);
@@ -50,9 +82,8 @@ void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
     for(int i = 0; i < atividades.size(); i ++){
         cout << "atividade: " << atividades.at(i).Atividade << "\t" <<  atividades.at(i).Ida_inicio << "\t" << atividades.at(i).Ida_fim << endl;
     }
-
+    preencheVolta(matrizAdjacencia, atividades);
 }
-
 
 void adjacencia(vector<t_vertice> &atividades){
     int **matrizAdjacencia;
