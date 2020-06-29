@@ -29,3 +29,18 @@
 	<fstream>
 	"pert_cpm.h"
 
+1593370012 source:c:\users\george\desktop\george\grafos\pert_cpm\main.cpp
+	<iostream>
+	"PERT_CPM.h"
+
+1593394345 c:\users\george\desktop\george\grafos\pert_cpm\pert_cpm.h
+	<iostream>
+	<vector>
+	<fstream>
+
+1593393412 source:c:\users\george\desktop\george\grafos\pert_cpm\pert_cpm.cpp
+	<iostream>
+	<vector>
+	<fstream>
+	"pert_cpm.h"
+

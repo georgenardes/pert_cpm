@@ -3,13 +3,12 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_set>
 #include <fstream>
 
 typedef struct {
     int Atividade;
     int Duracao;
-    int Precedente[3];
+    std::vector<int> Precedente;
     int Ida_inicio;
     int Ida_fim;
     int Volta_inicio;
