@@ -100,8 +100,8 @@ void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
     for(int i = 0; i < atividades.size(); i ++){
         for( int j = 0; j < atividades.size(); j ++){
             if(matrizAdjacencia[i][j] == 1){//se tiver precedente, continua do valor anterior
-                if()
-                atividades.at(i).Ida_inicio = (atividades.at(i-1).Ida_fim + 1);
+
+                atividades.at(i).Ida_inicio = (atividades.at(j).Ida_fim + 1);
                 atividades.at(i).Ida_fim = (atividades.at(i).Ida_inicio + atividades.at(i).Duracao - 1);
             }
         }
