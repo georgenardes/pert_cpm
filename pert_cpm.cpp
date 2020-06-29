@@ -43,17 +43,18 @@ void preencheVolta(int **matrizAdjacencia,vector<t_vertice> &atividades){
         }
     }
     cout << "fim maior = " << fim_maior << endl;
-
-    atividades.at(atividades.size()-1).Volta_fim = fim_maior;
+    for(int i = atividades.size()-1; i >= 0 ; i --){
+        atividades.at(i).Volta_fim = fim_maior;
+    }
     atividades.at(atividades.size()-1).Volta_inicio = fim_maior;
-
-
 
     for(int i = atividades.size()-1; i >= 0 ; i --){
         for( int j = 0; j < atividades.size(); j ++){
             if(matrizAdjacencia[i][j] == 1){ //procura maior valor de fim
-                atividades.at(j).Volta_fim = atividades.at(i).Volta_inicio - 1;
-                atividades.at(j).Volta_inicio = atividades.at(j).Volta_fim - atividades.at(j).Duracao + 1;
+                if((atividades.at(i).Volta_inicio - 1) < atividades.at(j).Volta_fim){
+                    atividades.at(j).Volta_fim = atividades.at(i).Volta_inicio - 1;
+                    atividades.at(j).Volta_inicio = atividades.at(j).Volta_fim - atividades.at(j).Duracao + 1;
+                }
             }
         }
     }
