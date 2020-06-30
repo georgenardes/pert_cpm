@@ -32,6 +32,43 @@ void printMatriz(int **mat, int qtd){
     }
 }
 
+void printVertice(vector<t_vertice> &atividades){
+    cout << endl << endl;
+    for(int i = 0; i < atividades.size(); i ++){
+        cout << "Atividade:\t" << atividades.at(i).Atividade << endl;
+        cout << "Ida inicio:\t" << atividades.at(i).Ida_inicio << endl;
+        cout << "Ida fim:\t" << atividades.at(i).Ida_fim << endl;
+        cout << "Volta fim:\t" << atividades.at(i).Volta_fim << endl;
+        cout << "Volta inicio:\t" << atividades.at(i).Volta_inicio << endl;
+        cout << "Precedente:\t";
+        for(int j = 0; j < atividades.at(i).Precedente.size(); j ++)
+            cout << atividades.at(i).Precedente.at(j) << "\t";
+        cout << endl;
+        cout << "Folga:\t\t" << atividades.at(i).Folga << endl << endl;
+    }
+}
+
+void calculaCaminhoCritico(vector<t_vertice> &atividades){
+    cout << "Caminho critico: " << endl;
+    for(int i = 0; i < atividades.size(); i ++){
+        if(atividades.at(i).Folga == 0)
+            cout << atividades.at(i).Atividade << "\t";
+    }
+    cout << endl << endl;
+    system("pause");
+}
+
+void preencheFolga(int **matrizAdjacencia,vector<t_vertice> &atividades){
+    for(int i = 0; i < atividades.size(); i ++){
+        atividades.at(i).Folga = atividades.at(i).Volta_fim - atividades.at(i).Ida_fim;
+    }
+    printVertice(atividades);
+    system("pause");
+    system("cls");
+    calculaCaminhoCritico(atividades);
+
+}
+
 void preencheVolta(int **matrizAdjacencia,vector<t_vertice> &atividades){
 
     //achar o maior fim
@@ -42,7 +79,7 @@ void preencheVolta(int **matrizAdjacencia,vector<t_vertice> &atividades){
                 fim_maior = atividades.at(i).Ida_fim;
         }
     }
-    cout << "fim maior = " << fim_maior << endl;
+
     for(int i = atividades.size()-1; i >= 0 ; i --){
         atividades.at(i).Volta_fim = fim_maior;
     }
@@ -58,11 +95,7 @@ void preencheVolta(int **matrizAdjacencia,vector<t_vertice> &atividades){
             }
         }
     }
-    cout << endl << endl;
-    for(int i = 0; i < atividades.size(); i ++){
-        cout << "atividade: " << atividades.at(i).Atividade << "\t" <<  atividades.at(i).Volta_inicio << "\t" << atividades.at(i).Volta_fim << endl;
-    }
-
+    preencheFolga(matrizAdjacencia, atividades);
 }
 
 void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
@@ -78,10 +111,6 @@ void preencheIda(int **matrizAdjacencia,vector<t_vertice> &atividades){
                 }
             }
         }
-    }
-    cout << endl << endl;
-    for(int i = 0; i < atividades.size(); i ++){
-        cout << "atividade: " << atividades.at(i).Atividade << "\t" <<  atividades.at(i).Ida_inicio << "\t" << atividades.at(i).Ida_fim << endl;
     }
     preencheVolta(matrizAdjacencia, atividades);
 }
@@ -99,8 +128,11 @@ void adjacencia(vector<t_vertice> &atividades){
             }
         }
     }
+    cout << endl << endl;
     cout << "Imprimindo matriz adjacencia" << endl << endl;
     printMatriz(matrizAdjacencia, atividades.size());
+    system("pause");
+    system("cls");
     preencheIda(matrizAdjacencia, atividades);
 }
 
@@ -170,6 +202,7 @@ void le_vertice(){
     vector <t_vertice> atividades;
 
     cout << "Lendo arquivo..." << endl;
+    system("pause");
     atividades = readerAtividades("entrada.csv");
 
     cout << "Atividades \t Duracao \t Precedentes" << endl;
@@ -179,5 +212,6 @@ void le_vertice(){
             cout <<  atividades.at(i).Precedente.at(j) << "\t  ";
         cout << endl;
     }
+    system("pause");
     adjacencia(atividades);
 }
